@@ -5,9 +5,346 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Christian Cavagna | Cantastorie Digitale</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-  <!-- CSS incluso direttamente per semplicità -->
+  <style>
+    :root {
+      --primary: #ff5f2e;
+      --secondary: #c13d21;
+      --text: #ffffff;
+      --accent: #f0c58a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: url('ChatGPT Image 5 giu 2025, 11_45_59.png') no-repeat center center/cover;
+      position: relative;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 1;
+    }
+
+    header * {
+      position: relative;
+      z-index: 2;
+    }
+
+    header img {
+      width: 150px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-top: 0.5rem;
+      color: var(--accent);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .cta {
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary);
+      border: none;
+      color: white;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .cta:hover {
+      background-color: var(--secondary);
+    }
+
+    section {
+      padding: 5rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      margin-top: 3rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+    }
+
+    .img-section {
+      max-width: 1000px;
+      margin: 3rem auto;
+      text-align: center;
+    }
+
+    .img-section img {
+      max-width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    form button {
+      width: 100%;
+    }
+
+    footer {
+      background-color: #111;
+      color: #999;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      section {
+        padding: 2rem 1rem;
+      }
+    }
+    .nav-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    color: var(--primary);
+  }
+
+</style>
 </head>
 <body>
-<!-- CONTENUTO HTML QUI -->
+  <style>
+    #main-content {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 1.2s ease, max-height 1.5s ease;
+      scroll-margin-top: 100px;
+    }
+    #main-content.visible {
+      opacity: 1;
+      max-height: 5000px;
+    }
+  </style>
+  <nav style="position:fixed;top:0;width:100%;background:#111;padding:1rem 2rem;z-index:999;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,0.3);">
+  <img src="logo.jpg" alt="Logo" style="height:40px;border-radius:50%;">
+  <div style="display:flex;gap:2rem;">
+    <a href="#chi-solo" class="nav-link">La mia storia</a>
+    <a href="#servizi" class="nav-link">Visione in azione</a>
+    <a href="#portfolio" class="nav-link">Voci dal mio lavoro</a>
+    <a href="#contatti" class="nav-link">Contatti</a>
+  </div>
+</nav>
+  <div style="height:70px;"></div>
+  <header>
+    <img src="logo.jpg" alt="Logo Christian Cavagna">
+    <h1>Christian Cavagna</h1>
+    <h2>Cantastorie Digitale – Creatività. Strategia. Visione.</h2>
+    <button class="cta" onclick="document.getElementById('main-content').classList.add('visible'); document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });">Apri il sipario</button>
+  </header>
+
+  <section id="chi-solo" class="fade-in">
+    <h2>Dalla passione alla professione</h2>
+    <p>Sono un professionista della comunicazione digitale con una missione: raccontare il valore dei brand attraverso narrazioni autentiche, coinvolgenti ed efficaci. Con esperienza nei settori entertainment, social media strategy e content creation, collaboro con grandi realtà per dare vita a storie che lasciano il segno.</p>
+  </section>
+
+  <div class="img-section fade-in">
+    <img src="ChatGPT Image 5 giu 2025, 11_50_35.png" alt="Christian Cavagna creator in città">
+  </div>
+
+  <section id="servizi" class="fade-in">
+    <h2>La mia visione in azione</h2>
+    <ul>
+      <li>Strategia e gestione social media</li>
+      <li>Content creation: video, storytelling, reels, TikTok</li>
+      <li>Campagne ADV (Meta Ads, TikTok Ads)</li>
+      <li>Analisi dati e reportistica</li>
+      <li>Copywriting creativo e SEO</li>
+      <li>Project management e attivazioni live</li>
+    </ul>
+  </section>
+
+  <div class="img-section fade-in">
+    <img src="ChatGPT Image 5 giu 2025, 11_52_57.png" alt="Strategia marketing in team">
+  </div>
+
+  <section id="portfolio" class="fade-in">
+    <h2>Voci dal mio lavoro</h2>
+    <p>Collaborazioni con Warner Bros, Sony Pictures, Disney+, Marvel Studios e Universal Pictures. Visita i miei profili social per vedere i progetti realizzati:</p>
+    <ul>
+      <li><a href="https://www.instagram.com/chrys.cavagna" target="_blank">Instagram</a></li>
+      <li><a href="https://www.tiktok.com/@chrys.cavagna" target="_blank">TikTok</a></li>
+      <li><a href="https://www.linkedin.com/in/christian-cavagna-44ab5922b" target="_blank">LinkedIn</a></li>
+    </ul>
+  </section>
+
+  <div class="img-section fade-in">
+    <img src="ChatGPT Image 5 giu 2025, 12_16_36.png" alt="Christian Cavagna in video call">
+  </div>
+
+  <section id="contatti" class="fade-in">
+    <h2>Costruiamo insieme</h2>
+    <form action="#" method="post">
+      <input type="text" name="nome" placeholder="Il tuo nome" required>
+      <input type="email" name="email" placeholder="La tua email" required>
+      <textarea name="messaggio" rows="5" placeholder="Il tuo messaggio" required></textarea>
+      <button type="submit" class="cta">Invia</button>
+    </form>
+  </section>
+
+  <div id="main-content">
+  <section id="chi-solo" class="fade-in">
+    <h2>Dalla passione alla professione</h2>
+    <p>Sono un professionista della comunicazione digitale con una missione: raccontare il valore dei brand attraverso narrazioni autentiche, coinvolgenti ed efficaci. Con esperienza nei settori entertainment, social media strategy e content creation, collaboro con grandi realtà per dare vita a storie che lasciano il segno.</p>
+  </section>
+
+  <div class="img-section fade-in">
+    <img src="ChatGPT Image 5 giu 2025, 11_50_35.png" alt="Christian Cavagna creator in città">
+  </div>
+
+  <section id="servizi" class="fade-in">
+    <h2>La mia visione in azione</h2>
+    <ul>
+      <li>Strategia e gestione social media</li>
+      <li>Content creation: video, storytelling, reels, TikTok</li>
+      <li>Campagne ADV (Meta Ads, TikTok Ads)</li>
+      <li>Analisi dati e reportistica</li>
+      <li>Copywriting creativo e SEO</li>
+      <li>Project management e attivazioni live</li>
+    </ul>
+  </section>
+
+  <div class="img-section fade-in">
+    <img src="ChatGPT Image 5 giu 2025, 11_52_57.png" alt="Strategia marketing in team">
+  </div>
+
+  <section id="portfolio" class="fade-in">
+    <h2>Voci dal mio lavoro</h2>
+    <p>Collaborazioni con Warner Bros, Sony Pictures, Disney+, Marvel Studios e Universal Pictures. Visita i miei profili social per vedere i progetti realizzati:</p>
+    <ul>
+      <li><a href="https://www.instagram.com/chrys.cavagna" target="_blank">Instagram</a></li>
+      <li><a href="https://www.tiktok.com/@chrys.cavagna" target="_blank">TikTok</a></li>
+      <li><a href="https://www.linkedin.com/in/christian-cavagna-44ab5922b" target="_blank">LinkedIn</a></li>
+    </ul>
+  </section>
+
+  <div class="img-section fade-in">
+    <img src="ChatGPT Image 5 giu 2025, 12_16_36.png" alt="Christian Cavagna in video call">
+  </div>
+
+  <section id="contatti" class="fade-in">
+    <h2>Costruiamo insieme</h2>
+    <form action="#" method="post">
+      <input type="text" name="nome" placeholder="Il tuo nome" required>
+      <input type="email" name="email" placeholder="La tua email" required>
+      <textarea name="messaggio" rows="5" placeholder="Il tuo messaggio" required></textarea>
+      <button type="submit" class="cta">Invia</button>
+    </form>
+  </section>
+</div>
+
+<footer>
+    <p>&copy; 2025 Christian Cavagna. Tutti i diritti riservati.</p>
+  </footer>
+<script>
+  const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section');
+  
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (scrollY >= sectionTop) current = section.getAttribute('id');
+    });
+
+    links.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').includes(current)) link.classList.add('active');
+    });
+  });
+</script>
 </body>
 </html>
