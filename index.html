@@ -1,93 +1,221 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Christian Cavagna | Cantastorie Digitale</title>
-  <meta name="description" content="Portfolio e servizi di Christian Cavagna - Cantastorie Digitale." />
-  <meta name="keywords" content="Christian Cavagna, Social Media, Content Creator, Storytelling, Strategia Digitale" />
-  <meta name="author" content="Christian Cavagna" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
-  <script defer src="script.js"></script>
-  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <meta name="description" content="Portfolio e servizi di Christian Cavagna - Cantastorie Digitale.">
+  <meta name="keywords" content="Christian Cavagna, Social Media, Content Creator, Storytelling, Strategia Digitale">
+  <meta name="author" content="Christian Cavagna">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #1e1e1e;
+      color: #fff;
+    }
+    header.hero {
+      height: 100vh;
+      background: url('hero-background-dark.webp') center center / cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+    header.hero img {
+      width: 150px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+    header.hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+    header.hero h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    }
+    .cta {
+      padding: 1rem 2rem;
+      background-color: #ff6f3c;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-decoration: none;
+    }
+    .cta:hover {
+      background-color: #ff8756;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      background: #111;
+      padding: 1rem 2rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    nav img {
+      height: 40px;
+      border-radius: 50%;
+    }
+    nav a {
+      color: #fff;
+      margin-left: 2rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover {
+      color: #ff6f3c;
+    }
+    main {
+      padding-top: 100px;
+      max-width: 960px;
+      margin: auto;
+    }
+    section {
+      padding: 4rem 2rem;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      margin: 4rem 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    section h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #ff6f3c;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    .img-section img {
+      width: 100%;
+      border-radius: 12px;
+      margin: 2rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+    form {
+      margin-top: 2rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #111;
+      font-size: 0.9rem;
+    }
+    .grid-boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    .grid-boxes .box {
+      background: linear-gradient(135deg, #2a2a2a, #1f1f1f);
+      padding: 1.8rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 4px solid #ff6f3c;
+    }
+    .grid-boxes .box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.8);
+      background: linear-gradient(135deg, #2d2d2d, #232323);
+    }
+    .highlight-title {
+      color: #ff6f3c;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    p + p {
+      margin-top: 1.5rem;
+    }
+  </style>
 </head>
 <body>
-  <header class="hero" style="background: url('hero-background-dark.webp') center/cover no-repeat; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-    <img src="logo-christian-cavagna.webp" alt="Logo" style="width: 150px; border-radius: 50%;" />
-    <h1>Christian Cavagna</h1>
-    <h2>Cantastorie Digitale – Creatività. Strategia. Visione.</h2>
-    <a href="#main-content" class="cta" onclick="document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });">Apri il sipario</a>
-  </header>
-
-  <nav>
-    <img src="logo-christian-cavagna.webp" alt="Logo" />
-    <div>
-      <a href="#chi-solo">La mia storia</a>
-      <a href="#servizi">Visione in azione</a>
-      <a href="#portfolio">Voci dal mio lavoro</a>
-      <a href="#contatti">Costruiamo insieme</a>
+<header class="hero">
+  <img src="logo-christian-cavagna.webp" alt="Logo Christian Cavagna">
+  <h1>Christian Cavagna</h1>
+  <h2><span style="color:#ff6f3c; font-weight:800; font-size:1.8rem;">Cantastorie Digitale</span><br><span style="color:#fff; font-weight:400; font-size:1.2rem;">Creatività. Strategia. Visione.</span></h2>
+  <a class="cta" href="#main-content">Apri il sipario</a>
+</header>
+<main id="main-content">
+  <section>
+    <h2>La mia storia</h2>
+    <p>Tutto è cominciato con uno smartphone, una piccola ring light e una grande passione per il cinema. È nato così, nel 2020, il mio alter ego social <strong>@Chrys.cavagna</strong> che mi ha portato, attraverso video e post sui social, a condividere la mia passione con <strong>decine di migliaia di persone</strong> e costruire una vera e propria professione, che mi ha aperto le porte di un nuovo mondo.</p>
+    <p>Dalla ridente località marittima di Ventimiglia, in Liguria, decido di trasferirmi a Roma per iniziare a fare le cose sul serio e <strong>ampliare i miei orizzonti</strong>. Arrivano così collaborazioni importanti ed esperienze formative, ma soprattutto la consapevolezza di aver intrapreso il percorso giusto.</p>
+    <p>La comunicazione è la mia dipendenza, la amo in ogni sua forma. Non amo gli schemi e le regole. Sono un creativo, non cerco mai la soluzione “più giusta”, ma quella più interessante.</p>
+    <p>La mia missione è trasformare qualsiasi cosa in un racconto che merita attenzione, dandogli valore e credibilità. Se desideri rendere il tuo brand un grande racconto... beh, sentiamoci!</p>
+</section>
+<div class="img-section">
+  <img src="sezione-storia.webp" alt="Immagine tra La mia storia e Visione in azione">
+</div>
+  
+  <section>
+    <h2>Visione in azione</h2>
+    <p>Attraverso una <strong>strategia mirata</strong> e una <strong>narrativa ingaggiante</strong>, ogni brand o attività può costruire un posizionamento social e una riconoscibilità che crei interesse e fidelizzazione. Oggi non basta essere bravi, e nemmeno essere i migliori: <strong>serve un'immagine accattivante</strong> che dimostri di essere fighi. Poi se si è anche bravi... il successo è assicurato!</p>
+    <p>Per questo serve una <strong>visione chiara</strong> del percorso da intraprendere e per questo serve rivolgersi a qualcuno che possa dare una svolta radicale alla tua attività, con <strong>coerenza, fiducia</strong> e <strong>comunione d’intenti</strong>.</p>
+    <p class="highlight-title">In cosa posso aiutarti?</p>
+    <div class="grid-boxes">
+      <div class="box">Strategia e gestione social media</div>
+      <div class="box">Content creation: video, storytelling, post</div>
+      <div class="box">Campagne ADV (Meta Ads, TikTok Ads)</div>
+      <div class="box">Analisi dati e reportistica</div>
+      <div class="box">Copywriting creativo e SEO</div>
+      <div class="box">Project management</div>
+      <div class="box">Costruzione brand identity</div>
     </div>
-  </nav>
-
-  <main id="main-content">
-    <section id="chi-solo" data-aos="fade-up">
-      <h2>La mia storia</h2>
-      <p>Sono un professionista della comunicazione digitale con una missione: raccontare il valore dei brand attraverso narrazioni autentiche, coinvolgenti ed efficaci.</p>
-    </section>
-    <div class="img-section" data-aos="fade-up">
-      <img src="sezione-storia.webp" alt="Christian Cavagna creator in città" loading="lazy" />
-    </div>
-
-    <section id="servizi" data-aos="fade-up">
-      <h2>Visione in azione</h2>
-      <ul>
-        <li>Strategia e gestione social media</li>
-        <li>Content creation</li>
-        <li>Campagne ADV</li>
-        <li>Analisi dati</li>
-        <li>Copywriting creativo</li>
-        <li>Project management</li>
-      </ul>
-    </section>
-    <div class="img-section" data-aos="fade-up">
-      <img src="sezione-servizi.webp" alt="Strategia marketing in team" loading="lazy" />
-    </div>
-
-    <section id="portfolio" data-aos="fade-up">
-      <h2>Voci dal mio lavoro</h2>
-      <p>Collaborazioni con Warner Bros, Sony Pictures, Disney+, Marvel Studios e Universal Pictures.</p>
-      <ul>
-        <li><a href="https://www.instagram.com/chrys.cavagna" target="_blank">Instagram</a></li>
-        <li><a href="https://www.tiktok.com/@chrys.cavagna" target="_blank">TikTok</a></li>
-        <li><a href="https://www.linkedin.com/in/christian-cavagna-44ab5922b" target="_blank">LinkedIn</a></li>
-      </ul>
-    </section>
-    <div class="img-section" data-aos="fade-up">
-      <img src="sezione-portfolio.webp" alt="Christian Cavagna in video call" loading="lazy" />
-    </div>
-
-    <section id="contatti" data-aos="fade-up">
-      <h2>Costruiamo insieme</h2>
-      <form>
-        <input type="text" name="nome" placeholder="Il tuo nome" required />
-        <input type="email" name="email" placeholder="La tua email" required />
-        <textarea name="messaggio" rows="5" placeholder="Il tuo messaggio" required></textarea>
-        <button type="submit" class="cta">Invia</button>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Christian Cavagna. Tutti i diritti riservati.</p>
-  </footer>
-
-  <script>
-    AOS.init();
-  </script>
+</section>
+<div class="img-section">
+  <img src="sezione-servizi.webp" alt="Immagine tra Visione in azione e Voci dal mio lavoro">
+</div>
+  
+  <section>
+    <h2>Voci dal mio lavoro</h2>
+    <p>In questi anni ho avuto la fortuna di vivere esperienze professionali <strong>molto diverse tra loro</strong> e tutte altamente formative: da quelle con <strong>brand internazionali</strong> come Warner Bros, Sony Pictures, Disney Italia e Universal Pictures, a quelle <strong>meno altisonanti e più concrete</strong> con attività e aziende del territorio, passando per gli anni dedicati all’attività di content creator sui miei profili personali.</p>
+</section>
+<div class="img-section">
+  <img src="sezione-portfolio.webp" alt="Immagine tra Voci dal mio lavoro e Costruiamo insieme">
+</div>
+  <section>
+    <h2>Costruiamo insieme</h2>
+    <p>Hai un’idea da raccontare? Un progetto da far decollare? Un brand che merita di essere valorizzato? <strong>Scrivimi.</strong> Possiamo creare qualcosa di grande, insieme.</p>
+    <form action="#" method="POST">
+      <input type="text" name="nome" placeholder="Il tuo nome" required>
+      <input type="email" name="email" placeholder="La tua email" required>
+      <textarea name="messaggio" rows="6" placeholder="Scrivimi il tuo messaggio..." required></textarea>
+      <button class="cta" type="submit">Invia il messaggio</button>
+    </form>
+  </section>
+</main>
 </body>
 </html>
