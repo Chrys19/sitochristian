@@ -158,18 +158,40 @@
       .menu.active { display: flex; }
       nav { flex-direction: column; align-items: flex-start; }
     }
+      #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      padding: 0.8rem 1.2rem;
+      background-color: #ff6f3c;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      display: none;
+    }
+    #scrollTopBtn:hover {
+      background-color: #ff8756;
+    }
   </style>
 </head>
 <body>
 
 <nav>
-  <img src="logo-christian-cavagna.webp" alt="Logo">
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <img src="logo-christian-cavagna.webp" alt="Logo">
+    <span style="color: #ff6f3c; font-weight: 600; font-size: 1.2rem;">Cantastorie digitale</span>
+  </div>
   <div class="menu-toggle" onclick="toggleMenu()">
     <div></div>
     <div></div>
     <div></div>
   </div>
   <div class="menu" id="navbar">
+    <a href="index.html">Sipario</a>
     <a href="#storia">Storia</a>
     <a href="#visione">Visione</a>
     <a href="#portfolio">Progetti</a>
@@ -270,7 +292,16 @@
       }
     });
   });
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('scrollTopBtn');
+    if (window.scrollY > 300) {
+      btn.style.display = 'block';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
 </script>
 
+<button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">Torna su</button>
 </body>
 </html>
