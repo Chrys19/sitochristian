@@ -1,45 +1,37 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta charset="UTF-8">
-  <title>Christian Cavagna | Cantastorie Digitale</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio e servizi di Christian Cavagna - Cantastorie Digitale.">
-  <meta name="keywords" content="Christian Cavagna, Social Media, Content Creator, Storytelling, Strategia Digitale">
-  <meta name="author" content="Christian Cavagna">
+  <title>Christian Cavagna</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Montserrat', sans-serif;
-      background: url('hero-background-dark.webp') center center / cover no-repeat;
-      color: white;
       height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('hero-background-dark.webp') center/cover no-repeat;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
       text-align: center;
-    }
-    img {
-      width: 150px;
-      border-radius: 50%;
-      margin-bottom: 1rem;
+      padding: 2rem;
     }
     h1 {
-      font-size: 3rem;
+      font-size: 2.8rem;
       font-weight: 800;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      margin-bottom: 1.5rem;
     }
-    h2 {
-      font-size: 1.5rem;
+    p {
+      font-size: 1.2rem;
       font-weight: 400;
+      letter-spacing: 0.5px;
       margin-bottom: 2rem;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
     }
     .cta {
       padding: 1rem 2rem;
@@ -48,18 +40,37 @@
       border-radius: 30px;
       color: white;
       font-size: 1rem;
-      text-decoration: none;
+      cursor: pointer;
       transition: background 0.3s;
+      text-decoration: none;
     }
     .cta:hover {
       background-color: #ff8756;
     }
+      .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .fade-in.delay {
+      animation-delay: 0.5s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 <body>
-  <img src="logo-christian-cavagna.webp" alt="Logo">
-  <h1>Christian Cavagna</h1>
-  <h2><span style="color:#ff6f3c;">Cantastorie Digitale</span><br>Creatività. Strategia. Visione.</h2>
-  <a class="cta" href="main.html">Apri il sipario</a>
+  <h1 class="fade-in" style="margin-bottom: 0.8rem;">Christian Cavagna</h1>
+  <h2 class="fade-in delay">
+    <span style="color:#ff6f3c; font-weight:800; font-size:1.8rem;">Cantastorie Digitale</span><br>
+    <span style="color:#fff; font-weight:400; font-size:1.2rem;">Creatività. Strategia. Visione.</span>
+  </h2>
+  <a class="cta fade-in delay" href="main.html" style="margin-top: 2rem;">Apri il sipario</a>
 </body>
 </html>
