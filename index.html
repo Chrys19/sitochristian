@@ -105,10 +105,12 @@
       text-transform: uppercase;
     }
     .img-section img {
-      width: 100%;
+      width: 70%;
+      max-width: 600px;
       border-radius: 12px;
-      margin: 2rem 0;
+      margin: 2rem auto;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: block;
     }
     form input, form textarea {
       width: 100%;
@@ -150,16 +152,26 @@
       background: linear-gradient(135deg, #2d2d2d, #232323);
     }
     .highlight-title {
-      color: #ff6f3c;
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-top: 2rem;
-      text-align: center;
-    }
+  color: #ff6f3c;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
     p + p {
       margin-top: 1.5rem;
     }
-  </style>
+    .img-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .img-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
 </head>
 <body>
 <header class="hero">
@@ -217,5 +229,20 @@
     </form>
   </section>
 </main>
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+  document.querySelectorAll('.img-section').forEach(section => {
+    observer.observe(section);
+  });
+</script>
 </body>
 </html>
